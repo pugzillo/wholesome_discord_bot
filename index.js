@@ -32,6 +32,21 @@ client.on('message', async msg => {
             let relaxImg = await getMeme('relax');
             msg.channel.send(relaxImg);
             break; 
+        case "!stand":
+            msg.channel.send("Subscribing you to stand reminders.");
+            let standImg = await getMeme('exercise');
+            msg.channel.send(standImg);
+            interval = setInterval (function () {
+                msg.channel.send("Remember to get out of your chair, potato person!")
+                .catch(console.error); 
+              }, 3600); //every hour
+              break;
+        case "!stop":
+            msg.channel.send("Stopping stand reminders!");
+            let restImg = await getMeme('rest');
+            msg.channel.send(restImg);
+            clearInterval(interval);
+            break;
     }
 });
 
